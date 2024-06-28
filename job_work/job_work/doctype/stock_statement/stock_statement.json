@@ -1,0 +1,314 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{from_date}  To  {to_date}",
+ "creation": "2024-06-01 09:57:36.591932",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "monthly_stock_statement_section",
+  "party_name",
+  "item_code",
+  "column_break_ermz",
+  "from_date",
+  "to_date",
+  "column_break_uihs",
+  "opening_stock",
+  "casting_wgt",
+  "finish_weight",
+  "get_data",
+  "column_break_iith",
+  "total_inward",
+  "balance",
+  "amended_from",
+  "ok_qty_boring",
+  "totals_section",
+  "tot_ok",
+  "casting_qty",
+  "column_break_qxyf",
+  "tot_mr",
+  "mr_wgt",
+  "column_break_5dhs",
+  "tot_cr",
+  "cr_wgt",
+  "column_break_yt5l",
+  "rw",
+  "casting_total_wgt",
+  "column_break_prcp",
+  "acr",
+  "cr_mr_wgt",
+  "column_break_0ure",
+  "total",
+  "diff_wgt",
+  "ok_cr_mr_boring",
+  "section_break_cizg",
+  "inward",
+  "column_break_1aax",
+  "outward"
+ ],
+ "fields": [
+  {
+   "fieldname": "monthly_stock_statement_section",
+   "fieldtype": "Section Break",
+   "label": "Monthly Stock Statement"
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Party Name",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ok_cr_mr_boring",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "OK-CR-MR Boring",
+   "precision": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ermz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "From Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "To Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "get_data",
+   "fieldtype": "Button",
+   "hidden": 1,
+   "label": "Get Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_uihs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "opening_stock",
+   "fieldtype": "Float",
+   "label": "Opening Stock",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fetch_from": ".weight_per_unit",
+   "fieldname": "casting_wgt",
+   "fieldtype": "Float",
+   "label": "Casting Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "7.5",
+   "fieldname": "finish_weight",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Finish Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "tot_cr",
+   "fieldtype": "Float",
+   "label": "Total CR QTY",
+   "precision": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cr_wgt",
+   "fieldtype": "Float",
+   "label": "CR Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qxyf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tot_mr",
+   "fieldtype": "Float",
+   "label": "Total MR QTY",
+   "precision": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mr_wgt",
+   "fieldtype": "Float",
+   "label": "MR Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5dhs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "acr",
+   "fieldtype": "Float",
+   "label": "Total ACR QTY",
+   "precision": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "casting_qty",
+   "fieldtype": "Float",
+   "label": "Casting Qty",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yt5l",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rw",
+   "fieldtype": "Float",
+   "label": "Total RW QTY",
+   "precision": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "casting_total_wgt",
+   "fieldtype": "Float",
+   "label": "Casting Total Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_prcp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Stock Statement",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "label": "Total",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cr_mr_wgt",
+   "fieldtype": "Float",
+   "label": "CR-MR Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_0ure",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "balance",
+   "fieldtype": "Float",
+   "label": "Balance",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "diff_wgt",
+   "fieldtype": "Float",
+   "label": "Diff Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ok_qty_boring",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Ok Qty Boring",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_iith",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_inward",
+   "fieldtype": "Float",
+   "label": "Total Inward ",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tot_ok",
+   "fieldtype": "Float",
+   "label": "Total Ok Qty",
+   "precision": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_cizg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "inward",
+   "fieldtype": "Table",
+   "label": "Inward",
+   "options": "Inward",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1aax",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outward",
+   "fieldtype": "Table",
+   "label": "Outward",
+   "options": "Outward",
+   "read_only": 1
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-06-26 16:51:58.667819",
+ "modified_by": "Administrator",
+ "module": "job_work",
+ "name": "Stock Statement",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

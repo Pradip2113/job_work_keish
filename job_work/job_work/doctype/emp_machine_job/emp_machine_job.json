@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:format:{date}-{shift}",
+ "creation": "2024-06-01 10:42:45.216812",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "column_break_qd3n",
+  "shift",
+  "section_break_3c7k",
+  "machine_job_item",
+  "total_job"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_qd3n",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Select",
+   "label": "Shift",
+   "options": "1\n2\n3"
+  },
+  {
+   "fieldname": "section_break_3c7k",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "machine_job_item",
+   "fieldtype": "Table",
+   "label": "Machine Job item",
+   "options": "Machine Job item"
+  },
+  {
+   "fieldname": "total_job",
+   "fieldtype": "Float",
+   "label": "Total Job",
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-06-01 10:44:45.464827",
+ "modified_by": "Administrator",
+ "module": "job_work",
+ "name": "Emp Machine Job",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

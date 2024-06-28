@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-06-01 09:56:21.664763",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "boring_item",
+  "column_break_roip",
+  "ok_qty_weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "boring_item",
+   "fieldtype": "Link",
+   "label": "Boring Item Name",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_roip",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ok_qty_weight",
+   "fieldtype": "Float",
+   "label": "OK Qty Weight",
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-06-14 15:46:41.890769",
+ "modified_by": "Administrator",
+ "module": "job_work",
+ "name": "Jobwork Setting",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

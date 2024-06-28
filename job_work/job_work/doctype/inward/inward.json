@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-06-01 09:46:40.548782",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "column_break_a9uo",
+  "item_code",
+  "column_break_dvzr",
+  "cn",
+  "po_no",
+  "column_break_xzco",
+  "qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_a9uo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Part"
+  },
+  {
+   "fieldname": "column_break_dvzr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cn",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "DC"
+  },
+  {
+   "fieldname": "po_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Po No",
+   "options": "Purchase Receipt"
+  },
+  {
+   "fieldname": "column_break_xzco",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "QTY",
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-06-01 10:23:34.905914",
+ "modified_by": "Administrator",
+ "module": "job_work",
+ "name": "Inward",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
