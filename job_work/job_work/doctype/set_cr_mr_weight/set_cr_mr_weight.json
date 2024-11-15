@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{item_code}",
+ "autoname": "format:{item_code}={from_date}--{to_date}",
  "creation": "2024-06-19 11:59:38.387652",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -49,12 +49,12 @@
    "fieldname": "casting_weight",
    "fieldtype": "Float",
    "label": "Casting weight",
-   "precision": "2"
+   "precision": "3"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-26 14:46:32.938161",
+ "modified": "2024-07-07 20:27:10.471628",
  "modified_by": "Administrator",
  "module": "job_work",
  "name": "Set CR MR Weight",

@@ -1,19 +1,18 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{from_date}  To  {to_date} - {company}",
- "creation": "2024-06-01 09:57:36.591932",
+ "autoname": "format:{from_date}  To  {to_date}",
+ "creation": "2024-09-18 16:38:08.517418",
+ "default_view": "List",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "monthly_stock_statement_section",
   "party_name",
   "item_code",
-  "company",
   "column_break_ermz",
   "from_date",
   "to_date",
-  "warehouse",
   "column_break_uihs",
   "opening_stock",
   "casting_wgt",
@@ -26,19 +25,19 @@
   "ok_qty_boring",
   "totals_section",
   "tot_ok",
-  "casting_qty",
+  "cr_wgt",
   "column_break_qxyf",
   "tot_mr",
   "mr_wgt",
   "column_break_5dhs",
   "tot_cr",
-  "cr_wgt",
+  "casting_qty",
   "column_break_yt5l",
   "rw",
   "casting_total_wgt",
   "column_break_prcp",
-  "acr",
   "cr_mr_wgt",
+  "acr",
   "column_break_0ure",
   "total",
   "diff_wgt",
@@ -71,14 +70,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "ok_cr_mr_boring",
-   "fieldtype": "Float",
-   "hidden": 1,
-   "label": "OK-CR-MR Boring",
-   "precision": "0",
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_ermz",
    "fieldtype": "Column Break"
   },
@@ -97,31 +88,22 @@
    "reqd": 1
   },
   {
-   "fieldname": "get_data",
-   "fieldtype": "Button",
-   "hidden": 1,
-   "label": "Get Data",
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_uihs",
    "fieldtype": "Column Break"
   },
   {
-   "default": "0",
    "fieldname": "opening_stock",
    "fieldtype": "Float",
    "label": "Opening Stock",
-   "precision": "2",
-   "read_only": 1
+   "precision": "2"
   },
   {
-   "fetch_from": ".weight_per_unit",
+   "fetch_from": "item_code.weight_per_unit",
    "fieldname": "casting_wgt",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Casting Weight",
-   "precision": "2",
-   "read_only": 1
+   "precision": "2"
   },
   {
    "default": "7.5",
@@ -129,135 +111,12 @@
    "fieldtype": "Float",
    "hidden": 1,
    "label": "Finish Weight",
-   "precision": "2",
-   "read_only": 1
+   "precision": "2"
   },
   {
-   "fieldname": "totals_section",
-   "fieldtype": "Section Break",
-   "label": "Totals"
-  },
-  {
-   "fieldname": "tot_cr",
-   "fieldtype": "Float",
-   "label": "Total CR QTY",
-   "precision": "0",
-   "read_only": 1
-  },
-  {
-   "fieldname": "cr_wgt",
-   "fieldtype": "Float",
-   "label": "CR Weight",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_qxyf",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "tot_mr",
-   "fieldtype": "Float",
-   "label": "Total MR QTY",
-   "precision": "0",
-   "read_only": 1
-  },
-  {
-   "fieldname": "mr_wgt",
-   "fieldtype": "Float",
-   "label": "MR Weight",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_5dhs",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "acr",
-   "fieldtype": "Float",
-   "label": "Total ACR QTY",
-   "precision": "0",
-   "read_only": 1
-  },
-  {
-   "fieldname": "casting_qty",
-   "fieldtype": "Float",
-   "label": "Casting Qty",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_yt5l",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "rw",
-   "fieldtype": "Float",
-   "label": "Total RW QTY",
-   "precision": "0",
-   "read_only": 1
-  },
-  {
-   "fieldname": "casting_total_wgt",
-   "fieldtype": "Float",
-   "label": "Casting Total Weight",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_prcp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Stock Statement",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "total",
-   "fieldtype": "Float",
-   "label": "Total",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "cr_mr_wgt",
-   "fieldtype": "Float",
-   "label": "CR-MR Weight",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_0ure",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "balance",
-   "fieldtype": "Float",
-   "label": "Balance",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "diff_wgt",
-   "fieldtype": "Float",
-   "label": "Diff Weight",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "ok_qty_boring",
-   "fieldtype": "Float",
-   "hidden": 1,
-   "label": "Ok Qty Boring",
-   "precision": "2",
-   "read_only": 1
+   "fieldname": "get_data",
+   "fieldtype": "Button",
+   "label": "Get Data"
   },
   {
    "fieldname": "column_break_iith",
@@ -267,15 +126,138 @@
    "fieldname": "total_inward",
    "fieldtype": "Float",
    "label": "Total Inward ",
-   "precision": "2",
-   "read_only": 1
+   "precision": "2"
+  },
+  {
+   "fieldname": "balance",
+   "fieldtype": "Float",
+   "label": "Balance",
+   "precision": "2"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Stock Statement",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "ok_qty_boring",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Ok Qty Boring",
+   "precision": "2"
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
   },
   {
    "fieldname": "tot_ok",
    "fieldtype": "Float",
    "label": "Total Ok Qty",
-   "precision": "0",
-   "read_only": 1
+   "precision": "2"
+  },
+  {
+   "fieldname": "cr_wgt",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "CR Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_qxyf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tot_mr",
+   "fieldtype": "Float",
+   "label": "Total MR QTY",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mr_wgt",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "MR Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_5dhs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tot_cr",
+   "fieldtype": "Float",
+   "label": "Total CR QTY",
+   "precision": "2"
+  },
+  {
+   "fieldname": "casting_qty",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Casting Qty",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_yt5l",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rw",
+   "fieldtype": "Float",
+   "label": "Total RW QTY",
+   "precision": "2"
+  },
+  {
+   "fieldname": "casting_total_wgt",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Casting Total Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_prcp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cr_mr_wgt",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "CR-MR Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "acr",
+   "fieldtype": "Float",
+   "label": "Total ACR QTY",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_0ure",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "label": "Total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "diff_wgt",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Diff Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "ok_cr_mr_boring",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "OK-CR-MR Boring",
+   "precision": "0"
   },
   {
    "fieldname": "section_break_cizg",
@@ -285,8 +267,7 @@
    "fieldname": "inward",
    "fieldtype": "Table",
    "label": "Inward",
-   "options": "Inward",
-   "read_only": 1
+   "options": "Inward"
   },
   {
    "fieldname": "column_break_1aax",
@@ -296,36 +277,31 @@
    "fieldname": "outward",
    "fieldtype": "Table",
    "label": "Outward",
-   "options": "Outward",
-   "read_only": 1
-  },
-  {
-   "fetch_from": ".custom_company",
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "label": "Company",
-   "options": "Company",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "item_code.custom_warehouse",
-   "fieldname": "warehouse",
-   "fieldtype": "Link",
-   "label": "Warehouse",
-   "options": "Warehouse",
-   "read_only": 1
+   "options": "Outward"
   }
  ],
- "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
+ "issingle": 1,
  "links": [],
- "modified": "2024-10-07 15:01:06.845276",
+ "modified": "2024-09-18 16:38:08.517418",
  "modified_by": "Administrator",
  "module": "job_work",
- "name": "Stock Statement",
+ "name": "Stock Statement Reg",
  "naming_rule": "Expression",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

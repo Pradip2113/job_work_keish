@@ -3,6 +3,8 @@ from frappe.model.document import Document
 from datetime import datetime
 from frappe.utils import nowdate, nowtime
 from frappe.utils import flt
+from erpnext.stock.utils import get_stock_balance
+
 
 class StockStatement(Document):
 	# @frappe.whitelist()	
@@ -42,22 +44,25 @@ class StockStatement(Document):
 
 	@frappe.whitelist()	
 	def upend_trigger(self):
-		opn_sum = 0
-		opening_balance = frappe.db.sql("""
-				SELECT qty_after_transaction 
-				FROM `tabStock Ledger Entry` 
-				WHERE posting_date < '{0}' 
-					AND warehouse = '{1}' 
-					AND item_code = '{2}' 
-					AND company = '{3}' 
-					AND is_cancelled='{4}'
-				ORDER BY creation DESC 
-				LIMIT 1
-				""".format(self.from_date, "MAHABAL METALS PVT LTD - KI", self.item_code, "KEISH Industries", False), as_dict=True)
-		if opening_balance:
-			opn_sum = opening_balance[0].qty_after_transaction
+		# opn_sum = 0
+		# opening_balance = frappe.db.sql("""
+		# 		SELECT qty_after_transaction 
+		# 		FROM `tabStock Ledger Entry` 
+		# 		WHERE posting_date < '{0}' 
+		# 			AND warehouse = '{1}' 
+		# 			AND item_code = '{2}' 
+		# 			AND company = '{3}' 
+		# 			AND is_cancelled='{4}'
+		# 		ORDER BY creation DESC 
+		# 		LIMIT 1
+		# 		""".format(self.from_date, self.warehouse, self.item_code, self.company, False), as_dict=True)
+		# if opening_balance:
+		# 	opn_sum = opening_balance[0].qty_after_transaction
+
 		# frappe.msgprint(str(opening_balance))
-		self.opening_stock = opn_sum
+		# self.opening_stock = opn_sum
+		open_stock = get_stock_balance(self.item_code, self.warehouse, self.from_date, '23:59:59')
+		self.opening_stock = open_stock
 		self.inward.clear()
 		self.outward.clear()
 		if isinstance(self.from_date, str):
@@ -86,7 +91,7 @@ class StockStatement(Document):
 		for purchase_doc in purchase_docs:
 			purchase = frappe.get_doc("Purchase Receipt", purchase_doc['name'])
 			for item in purchase.items:
-				if self.item_code == item.item_code and purchase.docstatus == 1:
+				if self.item_code == item.item_code and purchase.docstatus == 1 and self.company == purchase.company:
 				# if self.item_code == item.item_code and purchase.custom_flag == 0:
 					self.append("inward", {
 						'date': purchase.posting_date,
@@ -112,7 +117,7 @@ class StockStatement(Document):
 		for delivery_doc in delivery_docs:
 			delivery = frappe.get_doc("Delivery Note", delivery_doc['name'])
 			for item in delivery.items:
-				if self.item_code == item.item_code and delivery.docstatus == 1:
+				if self.item_code == item.item_code and delivery.docstatus == 1 and self.company == delivery.company:
 				# if self.item_code == item.item_code and delivery.custom_flag == 0:
 					self.append("outward", {
 						'date': delivery.posting_date,
@@ -145,12 +150,14 @@ class StockStatement(Document):
 		self.rw = tot_rw
 		self.total = tot_ok + tot_cr + tot_mr + tot_acr + tot_rw
 		self.casting_qty = tot_cr + tot_mr
-		self.casting_total_wgt = self.casting_wgt * (tot_cr + tot_mr)
+		if self.casting_wgt:
+			self.casting_total_wgt = self.casting_wgt * (tot_cr + tot_mr)
 		self.balance = (self.opening_stock + self.total_inward) - self.total
 		self.cr_wgt = tot_cr_kg
 		self.mr_wgt = tot_mr_kg
 		self.cr_mr_wgt = tot_cr_kg + tot_mr_kg
-		self.diff_wgt = self.casting_wgt * (self.casting_qty) - self.cr_mr_wgt
+		if self.casting_wgt:
+			self.diff_wgt = self.casting_wgt * (self.casting_qty) - self.cr_mr_wgt
 		# single_wgt = self.casting_wgt - self.finish_weight
 		# self.ok_qty_boring = single_wgt * self.tot_ok
 		
