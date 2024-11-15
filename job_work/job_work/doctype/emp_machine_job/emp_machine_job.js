@@ -23,3 +23,27 @@ frappe.ui.form.on("Machine Job item", "rate", function(frm, cdt, cdn) {
 });
 
 
+frappe.ui.form.on('Emp Machine Job', {
+    before_save:function(frm, cdt, cdn){
+    var d = locals[cdt][cdn];
+    var total1 = 0;
+    frm.doc.machine_job_item.forEach(function(d) { total1 += d.job_qty; });
+    frm.set_value("total_job", total1);
+    refresh_field("total_job");
+  },
+    machine_job_item_remove:function(frm, cdt, cdn){
+    var d = locals[cdt][cdn];
+    var total1 = 0;
+    frm.doc.machine_job_item.forEach(function(d) { total1 += d.job_qty; });
+    frm.set_value("total_job", total1);
+    refresh_field("total_job");
+    },
+    machine_job_item_add:function(frm, cdt, cdn){
+        var d = locals[cdt][cdn];
+        var total1 = 0;
+        frm.doc.machine_job_item.forEach(function(d) { total1 += d.job_qty; });
+        frm.set_value("total_job", total1);
+        refresh_field("total_job");
+        }
+    });
+
