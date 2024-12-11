@@ -5,11 +5,11 @@ app_description = "job_work"
 app_email = "pradipjadhav155@gmail.com"
 app_license = "mit"
 
-doc_events = {
-    "Sales Invoice": {
-        "on_update": "job_work.upi.qrgen"
-    }
-}
+# doc_events = {
+#     "Sales Invoice": {
+#         "on_update": "job_work.upi.qrgen"
+#     }
+# }
 
 # required_apps = []
 

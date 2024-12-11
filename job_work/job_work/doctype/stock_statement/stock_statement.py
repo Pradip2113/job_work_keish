@@ -160,4 +160,16 @@ class StockStatement(Document):
 			self.diff_wgt = self.casting_wgt * (self.casting_qty) - self.cr_mr_wgt
 		# single_wgt = self.casting_wgt - self.finish_weight
 		# self.ok_qty_boring = single_wgt * self.tot_ok
+		total_cr_kg = 0
+		total_mr_kg = 0
+		for j in self.outward:
+			if j.cr: 
+				total_cr_kg += j.ok_kg
+			if j.mr: 
+				total_mr_kg += j.ok_kg 
+
+		self.cr_wgt = total_cr_kg
+		self.mr_wgt = total_mr_kg
+		self.cr_mr_wgt = self.cr_wgt + self.mr_wgt
+  
 		
